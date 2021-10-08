@@ -8,15 +8,16 @@
 </head>
 <body>
   <div id="app">
-    <div>Fuck the world</div>
+    <div class="item">Fuck the world</div>
     <div>If you are rich</div>
     <div>Otherwise, fuck yourself!</div>
   </div>
 </body>
 <script>
-  const app = document.querySelector("#app");
-  const children = app.childNodes;//
-  const childs = app.children
-  console.log(Array.from(children), Array.from(childs))
+  const app = document.querySelector(".item");
+  // console.log(app.attributes.class = "box")
+  app.setAttribute('class', 'b')
+  app.className = "container"
+
 </script>
 </html>

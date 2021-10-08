@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网络请求</title>
+</head>
+<body>
+  <script>
+    // const xhr = new XMLHttpRequest();
+    // xhr.onreadystatechange = function() {
+    //   if(xhr.readyState === 4) {
+    //     if((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+    //       console.log(xhr.responseText)
+    //     } else {
+    //       console.log(xhr.status)
+    //     }
+    //   }
+    // }
+    // xhr.open('get', './data/mock.json', true);
+    // xhr.send(null)
+
+    //手写ajax
+    function ajax(type="get", url, data) {
+      if(data == null) data = null;
+      return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest;
+        xhr.onreadystatechange = function() {
+          if(xhr.readyState === 4) {
+            if((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+              resolve(xhr.responseText)
+            } else {
+              reject(xhr.status)
+            }
+          }
+        };
+
+        xhr.open(type,url, true);
+        xhr.send(data)
+      })
+    }
+
+    ajax('get',"./data/mock.json").then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.error(err)
+    })
+  </script>
+</body>
+</html>
