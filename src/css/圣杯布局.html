@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圣杯布局</title>
+  <style>
+    .box {
+      margin-left: 200px;
+      margin-right: 150px;
+      min-width: 200px;
+    }
+    .col {
+      height: 100px;
+      float: left;
+    }
+    .center {
+      width: 100%;
+      background-color: skyblue;
+    }
+    .left {
+      position: relative;
+      width: 200px;
+      margin-left: -100%;
+      background-color: slateblue;
+      right: 200px;
+    }
+    .right {
+      width: 150px;
+      margin-right: -150px;
+      background-color: springgreen;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    1. 使用float布局
+    2. 父容器用margin为左右两边留出空间
+    3. 两边使用margin负值填充预留的空间-->
+  <div class="box">
+    <div class="col center"></div>
+    <div class="col left"></div>
+    <div class="col right"></div>
+  </div>
+</body>
+</html>

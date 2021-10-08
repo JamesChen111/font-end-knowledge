@@ -1,0 +1,28 @@
+(<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写bind</title>
+</head>
+<body>
+  <script>
+    Function.prototype.bind1 = function() {
+      let arg = Array.prototype.slice.call(arguments);
+      let t = arg.shift();
+      let self = this;
+      console.log(self)
+      return function() {
+        return self.apply(t, arg)
+      }
+    }
+
+    function func(arg) {
+      console.log({arg},this)
+    }
+    let foo = func.bind1({x: 1},1)
+    foo()
+  </script>
+</body>
+</html>)

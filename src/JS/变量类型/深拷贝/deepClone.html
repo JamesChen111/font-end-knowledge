@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写深拷贝</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      name: "Red",
+      address: {
+        city: "changde",
+        go: ['huaihua','changsha']
+      },
+      hobby: 'eat'
+    }
+    const person = cloneDeep(obj);
+    obj.address.city = "zhumadian"
+    console.log({person});
+
+    function cloneDeep(obj = {}) {
+      if(typeof obj !== 'object' || obj == null) {
+        return obj;
+      }
+
+      let result;
+      if(Array.isArray(obj)) {
+        result = []
+      } else {
+        result = {}
+      }
+
+      for(let key in obj) {
+        if(obj.hasOwnProperty(key)) {
+          result[key] = cloneDeep(obj[key])
+        }
+      }
+      return result;
+    }
+  </script>
+</body>
+</html>

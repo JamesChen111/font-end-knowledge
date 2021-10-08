@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call</title>
+</head>
+<body>
+  <script>
+    /**
+     * 1. 在Function的原型上添加方法
+     * 2. 变量cxt赋值传入的this参数
+     * 3. cxt添加属性fun， cxt.fun = this,目的是为了让调用call/bind/apply的函数中的this指向传入的context。
+     * 注意args参数的传递,...args中传入的args是个数组。
+    */
+    Function.prototype.call1 = function(context, ...args) {
+      // const args = Array.from(arguments);
+      const cxt = context || window;
+      // const t = args.shift();
+      cxt.fun = this;
+
+      const res = cxt.fun(...args);
+      delete cxt.fun;
+      console.log(cxt)
+      return res
+    }
+
+    Function.prototype.call_ = function(context) {
+      const cxt = context || window;
+      //this指向调用它的执行上下文，即指向调用call_的函数；cxt.func = this是为了让调用call_的函数中的this指向cxt.
+      cxt.func = this;
+      const args = Array.from(arguments).slice(1);
+      // const res = arguments.length > 1 ? cxt.func(...args) : cxt.func();
+      const res = cxt.func(...args)
+
+      // delete cxt.func;
+
+      return res;
+    }
+ 
+    //手写apply
+    Function.prototype.apply1 = function(context, args) {
+      // const args = Array.from(arguments);
+      // const t = args.shift() || window;
+      // t.func = this;
+
+      // return t.func(...args[0])
+      const cxt = context || window;
+      cxt.fun = this;
+      const res = cxt.fun(...args)
+      delete cxt.fun;
+
+      return res
+
+    }
+    function foo(args, a) {
+      console.log(this, args, a)
+    }
+
+    Function.prototype.bind1 = function(context, ...args1) {
+      const cxt = context || window;
+      cxt.fun = this;
+      return function(...args2) {
+        const res = cxt.fun(...[...args1, ...args2]);
+        delete cxt.fun;
+        return res
+      }
+    }
+    // foo.apply1({x: 1},[1,2,3])
+    function foo(args) {
+      console.log(this,args)
+    }
+    const bar = foo.bind1({x: 1}, 1);
+    bar(2);
+  </script>
+</body>
+</html>

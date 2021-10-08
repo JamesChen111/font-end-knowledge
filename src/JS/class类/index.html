@@ -1,0 +1,37 @@
+<script>
+  /**
+   * 使用extends实现继承；
+   * 在子类中调用super()可以继承父类的属性
+   * 在子类中可以随意扩展属性和方法
+  */
+  class People {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    sayHi() {
+      console.log(
+        `${this.name} say Hi`
+      )
+    }
+  }
+
+  class Student extends People {
+    constructor(name, sex) {
+      super(name);
+      this.sex = sex;
+    }
+
+    eat() {
+      console.log(
+        `${this.name} is eating`
+      )
+    }
+  }
+
+  let name = new Student('yanwei', 'male')
+  console.log(name.name, name.sex, name.age)
+  name.sayHi();
+  name.eat()
+</script>

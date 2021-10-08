@@ -1,0 +1,15 @@
+<script>
+/**
+ * 除了== null之外，其他的都用===
+ * x == null --> x === null || x = undefined
+*/
+const obj = {x: 100}
+if(obj.a == null) {
+  console.log("obj.a is undefined")
+}
+
+// typeof 能识别哪些类型？
+// 1. 所有值类型
+// 2. 识别函数
+// 3. 判断是否是引用类型
+</script>

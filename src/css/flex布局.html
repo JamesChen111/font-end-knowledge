@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex布局</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      /* flex-direction: row-reverse; */
+      justify-content: space-between;
+      border: 1px solid #999;
+      border-radius: 5px;
+      padding: 8px;
+    }
+    .item {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: #333;
+    }
+    .col-1 {
+      /* width: 100px; */
+      /* background-color: skyblue; */
+      /* flex: 1; */
+      /* flex-basis: 300px; */
+    }
+    .col-2 {
+      /* width: 150px; */
+      /* background-color: goldenrod; */
+      align-self: center;
+    }
+    .col-3 {
+      /* width: 200px; */
+      /* background-color: red; */
+      align-self: flex-end;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    以下属性设置在容器上：
+    justify-content: 
+    flex-direction: 决定主轴的方向
+      row:   主轴为水平方向。
+      column:主轴为竖直方向。
+      row-reverse: 主轴为水平方向，但元素的排列和属性值为row时相反，|1 2 3 -> 3 2 1|
+    flex-wrap: 决定主轴方向的空间不足时是否换行。
+      wrap：换行。
+      nowrap: 不换行。
+    flex-flow: flex-direction和flex-wrap的简写，默认为row nowrap
+    justify-content: 定义了项目在主轴上的对齐方式。
+      flex-start: 左对齐（默认值）
+      flex-end: 右对齐。
+      space-between: 两端对齐，项目之间的间隔相等
+      space-around: 每个项目之间的间距相等。
+      center: 居中。
+    align-items: 项目在交叉轴上的对齐方式
+      flex-start: 交叉轴的起点对齐
+      flex-start: 交叉轴的终点对齐
+      center: 交叉轴居中对齐
+
+    项目属性：
+      order: 定义项目的排列顺序。值小的排在前面
+      flex-grow: 定义项目的放大比例，值为1时放大，0不放大。（默认为0）
+      flex-shrink: 定义项目的缩小比例，默认为1，即空间不足，项目将缩小。
+      flex-basis: 项目在分配多余空间之前，占据的主轴空间。
+      flex: flex-grow flex-shrink flex-basis的缩写，默认值为0 1 auto, 后两个属性可省略，若省略就相当于使用flex-grow。
+      align-self: 允许项目在交叉轴上有与其他项目不同的对齐方式，可覆盖aligh-items的值。
+  -->
+
+  <div class="box">
+    <div class="item col-1"></div>
+    <div class="item col-2"></div>
+    <div class="item col-3"></div>
+  </div>
+</body>
+</html>

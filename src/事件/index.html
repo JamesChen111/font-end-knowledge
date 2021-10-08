@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件</title>
+</head>
+<body>
+  <a id="app" class="box"></>
+  <script>
+    function bindEvent(ele,type, func) {
+      ele.addEventListener(type, func)
+    }
+    const app = document.getElementById("app");
+    const app1 = document.querySelector(".box")
+    console.log(app1)
+    console.log(app.matches('a'))
+
+    function bindEvent(elem, type, selector, fn) {
+      if(fn == null) {
+        fn = selector;
+        selector = null
+      }
+      elem.addEventListener(type, e =>{
+        const target = e.target;
+        if(selector) {
+          if(elem.matches(selector)) {
+            fn.call(target, e)
+          }
+        } else {
+          fn.call(target, e)
+        }
+      })
+    }
+  </script>
+</body>
+</html>
